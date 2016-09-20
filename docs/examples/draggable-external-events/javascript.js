@@ -12,18 +12,20 @@ angular
         type: 'warning',
         color: calendarConfig.colorTypes.warning,
         startsAt: moment().startOf('month').toDate(),
-        draggable: true
+        draggable: true,
+          resizable: true
       },
       {
         title: 'Event 2',
         type: 'danger',
         color: calendarConfig.colorTypes.important,
         startsAt: moment().startOf('month').toDate(),
-        draggable: true
+        draggable: true,
+          resizable: true
       }
     ];
 
-    vm.calendarView = 'month';
+    vm.calendarView = 'day';
     vm.viewDate = moment().startOf('month').toDate();
     vm.cellIsOpen = false;
 
@@ -31,8 +33,9 @@ angular
       var externalIndex = vm.externalEvents.indexOf(event);
       if (externalIndex > -1) {
         vm.externalEvents.splice(externalIndex, 1);
-        vm.events.push(event);
+
       }
+      vm.events.push(event);
       event.startsAt = start;
       if (end) {
         event.endsAt = end;

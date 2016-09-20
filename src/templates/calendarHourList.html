@@ -9,8 +9,7 @@
                 vm.dateRangeSelect.startDate <= vm.getClickedDate(segment.date, vm.dayViewSplit * $index) &&
                 vm.getClickedDate(segment.date, vm.dayViewSplit * $index) < vm.dateRangeSelect.endDate }, segment.cssClass]"
       ng-click="vm.onTimespanClick({calendarDate: vm.getClickedDate(segment.date, vm.dayViewSplit * $index)})"
-      mwl-droppable
-      on-drop="vm.eventDropped(dropData.event, vm.getClickedDate(segment.date, vm.dayViewSplit * $index))"
+      ui-on-drop="vm.eventDropped($data.event, vm.getClickedDate(segment.date, vm.dayViewSplit * $index))"
       mwl-drag-select="!!vm.onDateRangeSelect"
       on-drag-select-start="vm.onDragSelectStart(vm.getClickedDate(segment.date, vm.dayViewSplit * $index))"
       on-drag-select-move="vm.onDragSelectMove(vm.getClickedDate(segment.date, vm.dayViewSplit * ($index + 1)))"

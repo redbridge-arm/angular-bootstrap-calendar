@@ -3,6 +3,7 @@
 require('./less/calendar.less');
 
 var angular = require('angular');
+require('angular-native-dragdrop');
 
 function requireAll(r) {
   r.keys().forEach(r);
@@ -27,7 +28,7 @@ if (EXCLUDE_TEMPLATES === false) {
 }
 
 module.exports = angular
-  .module('mwl.calendar', [])
+  .module('mwl.calendar', ['ang-drag-drop'])
   .config(function(calendarConfig) {
     angular.forEach(templates, function(template, templateName) {
       if (!calendarConfig.templates[templateName]) {

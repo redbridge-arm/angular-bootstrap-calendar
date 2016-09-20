@@ -10,8 +10,7 @@
         'cal-day-today': day.isToday,
         'cal-day-future': day.isFuture}"
       mwl-element-dimensions="vm.dayColumnDimensions"
-      mwl-droppable
-      on-drop="vm.eventDropped(dropData.event, day.date)">
+      ui-on-drop="vm.eventDropped($data.event, day.date)">
 
       <span ng-bind="day.weekDayLabel"></span>
       <br>

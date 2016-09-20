@@ -86,6 +86,7 @@
     }
   },
   "dependencies": {
+    "angular-native-dragdrop": "^1.2.2",
     "calendar-utils": "0.0.22"
   }
 }

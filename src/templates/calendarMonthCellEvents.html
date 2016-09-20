@@ -1,5 +1,5 @@
 <div class="events-list" ng-show="day.events.length > 0">
-  <a
+  <div
     ng-repeat="event in day.events | orderBy:'startsAt' track by event.$id"
     href="javascript:;"
     ng-click="$event.stopPropagation(); vm.onEventClick({calendarEvent: event})"
@@ -10,7 +10,7 @@
     ng-mouseleave="vm.highlightEvent(event, false)"
     tooltip-append-to-body="true"
     uib-tooltip-html="vm.calendarEventTitle.monthViewTooltip(event) | calendarTrustAsHtml"
-    mwl-draggable="event.draggable === true"
-    drop-data="{event: event, draggedFromDate: day.date.toDate()}">
-  </a>
+    ui-draggable="event.draggable === true"
+    drag="{event: event, draggedFromDate: day.date.toDate()}">
+  </div>
 </div>

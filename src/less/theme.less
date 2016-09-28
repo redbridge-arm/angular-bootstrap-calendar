@@ -13,7 +13,7 @@
   background-color: @rowHover;
 }
 .cal-month-day {
-  height: @rowHeightMonth;
+  height: 100%;
 }
 [class*="cal-cell"]:hover,
 .cell-focus,
@@ -25,7 +25,7 @@
 }
 .cal-year-box [class*="span"],
 .cal-month-box [class*="cal-cell"] {
-  min-height: @rowHeightMonth;
+  //min-height: @rowHeightMonth;
   border-right: @borderSizevert @borderStyle @borderColor;
   position: relative;
 }
@@ -54,10 +54,19 @@
   border-right: @borderSizevert @borderStyle @borderColor;
   border-left: @borderSizevert @borderStyle @borderColor;
   border-radius: 2px;
-  height: 100%;
+
   width: 100%;
   position: absolute;
   overflow: hidden;
+}
+.cal-month-box,
+.cal-year-box{
+  height: ~"calc(100% - 30px)";
+  overflow-y: scroll;
+}
+
+.cal-week-box {
+  height: 100%;
 }
 .cal-month-box {
   border-right: 0px;
@@ -92,7 +101,8 @@ span[data-cal-date]:hover {
   color: darkgreen;
 }
 .cal-month-box .cal-day-today span[data-cal-date] {
-  font-size: 1.9em;
+  font-size: 1.2em;
+  font-weight: bolder;
 }
 .cal-day-holiday span[data-cal-date] {
   color: #800080;
@@ -183,7 +193,8 @@ a.cal-event-week {
 
 .cal-context {
   width: 100%;
-
+  position: absolute;
+  height: 100%;
 }
 
 @media (max-width: 991px) {

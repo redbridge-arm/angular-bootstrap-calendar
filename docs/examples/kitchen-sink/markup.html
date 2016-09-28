@@ -48,7 +48,7 @@
 
   <br>
 
-  <div style="height: 200px; position: relative;">
+  <div style="height: 300px; position: relative; background-color: gainsboro">
   <mwl-calendar
     events="vm.events"
     view="vm.calendarView"
@@ -62,7 +62,9 @@
     day-view-split="30"
     cell-modifier="vm.modifyCell(calendarCell)"
     cell-auto-open-disabled="true"
-    on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)">
+    on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)"
+    scroll-to-id="hour14"
+  >
   </mwl-calendar>
   </div>
   <br><br><br>

@@ -84,7 +84,7 @@ angular
     };
 
   })
-  .directive('mwlCalendarDay', function() {
+  .directive('mwlCalendarDay', function($timeout) {
 
     return {
       template: '<div mwl-dynamic-directive-template name="calendarDayView" overrides="vm.customTemplateUrls"></div>',
@@ -103,7 +103,17 @@ angular
         dayViewEventChunkSize: '=',
         customTemplateUrls: '=?',
         cellModifier: '=',
-        templateScope: '='
+        templateScope: '=',
+        scrollToId: '='
+
+      },
+      link: function(scope, element, attrs, calendarCtrl) {
+        $timeout(function() {
+          var container = document.getElementById('daypanel'),
+              hour = document.getElementById(scope.vm.scrollToId);
+          if (hour !== null) container.scrollTop = hour.offsetTop;
+        }, 1);
+
       },
       controller: 'MwlCalendarDayCtrl as vm',
       bindToController: true

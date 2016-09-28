@@ -16,7 +16,7 @@
       on-drag-select-end="vm.onDragSelectEnd(vm.getClickedDate(segment.date, vm.dayViewSplit * ($index + 1)))"
       ng-if="!vm.dayWidth">
       <div class="cal-day-hour-part-time">
-        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart"></strong>
+        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart" id="hour{{segment.date.hour()}}"></strong>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
       ng-repeat="segment in hour.segments track by $index"
       ng-if="vm.dayWidth">
       <div class="cal-day-hour-part-time">
-        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart"></strong>
+        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart" id="hour{{segment.date.hour()}}"></strong>
         &nbsp;
       </div>
       <div

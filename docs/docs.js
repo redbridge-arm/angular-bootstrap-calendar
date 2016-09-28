@@ -126,4 +126,8 @@ angular
   })
   .config(function($touchProvider) {
     $touchProvider.ngClickOverrideEnabled(true);
-  });
+  })
+    .config(function (calendarConfig) {
+      calendarConfig.showTimesOnWeekView = true;
+    })
+;

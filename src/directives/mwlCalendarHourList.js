@@ -111,7 +111,7 @@ angular
     };
 
   })
-  .directive('mwlCalendarHourList', function() {
+  .directive('mwlCalendarHourList', function($timeout) {
 
     return {
       restrict: 'E',
@@ -128,7 +128,19 @@ angular
         onEventTimesChanged: '=',
         customTemplateUrls: '=?',
         cellModifier: '=',
-        templateScope: '='
+        templateScope: '=',
+        scrollToId: '='
+      },
+      link: function(scope, element, attrs, calendarCtrl) {
+        scope.vm.calendarCtrl = calendarCtrl;
+        $timeout(function() {
+          var container = document.getElementById('daypanel'),
+              hour = document.getElementById(scope.vm.scrollToId);
+          if (hour !== null) {
+            container.scrollTop = hour.offsetTop;
+          }
+        }, 1);
+
       },
       bindToController: true
     };

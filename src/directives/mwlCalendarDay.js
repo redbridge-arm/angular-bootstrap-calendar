@@ -107,16 +107,16 @@ angular
         scrollToId: '='
 
       },
-      link: function(scope, element, attrs, calendarCtrl) {
-        $timeout(function() {
-          var container = document.getElementById('daypanel'),
-              hour = document.getElementById(scope.vm.scrollToId);
-          if (hour !== null) {
-            container.scrollTop = hour.offsetTop;
-          }
-        }, 1);
-
-      },
+      // link: function(scope, element, attrs, calendarCtrl) {
+      //   $timeout(function() {
+      //     var container = document.getElementById('daypanel'),
+      //         hour = document.getElementById(scope.vm.scrollToId);
+      //     if (hour !== null) {
+      //       container.scrollTop = hour.offsetTop;
+      //     }
+      //   }, 1);
+      //
+      // },
       controller: 'MwlCalendarDayCtrl as vm',
       bindToController: true
     };

@@ -40,7 +40,9 @@
       custom-template-urls="vm.customTemplateUrls"
       cell-modifier="vm.cellModifier"
       template-scope="vm.templateScope"
-      ng-if="vm.showTimes">
+      ng-if="vm.showTimes"
+      scroll-to-id="vm.scrollToId"
+    >
     </mwl-calendar-hour-list>
 
     <div class="row" ng-repeat="row in vm.view.eventRows track by $index">

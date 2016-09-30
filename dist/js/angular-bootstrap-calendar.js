@@ -918,16 +918,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        scrollToId: '='
 
 	      },
-	      link: function(scope, element, attrs, calendarCtrl) {
-	        $timeout(function() {
-	          var container = document.getElementById('daypanel'),
-	              hour = document.getElementById(scope.vm.scrollToId);
-	          if (hour !== null) {
-	            container.scrollTop = hour.offsetTop;
-	          }
-	        }, 1);
-
-	      },
+	      // link: function(scope, element, attrs, calendarCtrl) {
+	      //   $timeout(function() {
+	      //     var container = document.getElementById('daypanel'),
+	      //         hour = document.getElementById(scope.vm.scrollToId);
+	      //     if (hour !== null) {
+	      //       container.scrollTop = hour.offsetTop;
+	      //     }
+	      //   }, 1);
+	      //
+	      // },
 	      controller: 'MwlCalendarDayCtrl as vm',
 	      bindToController: true
 	    };
@@ -1052,7 +1052,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	  }])
-	  .directive('mwlCalendarHourList', function() {
+	  .directive('mwlCalendarHourList', ["$timeout", function($timeout) {
 
 	    return {
 	      restrict: 'E',
@@ -1069,12 +1069,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onEventTimesChanged: '=',
 	        customTemplateUrls: '=?',
 	        cellModifier: '=',
-	        templateScope: '='
+	        templateScope: '=',
+	        scrollToId: '='
+	      },
+	      link: function(scope, element, attrs, calendarCtrl) {
+	        scope.vm.calendarCtrl = calendarCtrl;
+	        $timeout(function() {
+	          var container = document.getElementById('daypanel'),
+	              hour = document.getElementById(scope.vm.scrollToId);
+	          if (hour !== null) {
+	            container.scrollTop = hour.offsetTop;
+	          }
+	        }, 1);
+
 	      },
 	      bindToController: true
 	    };
 
-	  });
+	  }]);
 
 
 /***/ },
@@ -1765,17 +1777,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        scrollToId: '='
 	      },
 	      controller: 'MwlCalendarWeekCtrl as vm',
-	      link: function(scope, element, attrs, calendarCtrl) {
-	        scope.vm.calendarCtrl = calendarCtrl;
-	        $timeout(function() {
-	          var container = document.getElementById('daypanel'),
-	              hour = document.getElementById(scope.vm.scrollToId);
-	          if (hour !== null) {
-	            container.scrollTop = hour.offsetTop;
-	          }
-	        }, 1);
-
-	      },
+	      // link: function(scope, element, attrs, calendarCtrl) {
+	      //   scope.vm.calendarCtrl = calendarCtrl;
+	      //   $timeout(function() {
+	      //     var container = document.getElementById('daypanel'),
+	      //         hour = document.getElementById(scope.vm.scrollToId);
+	      //     if (hour !== null) {
+	      //       container.scrollTop = hour.offsetTop;
+	      //     }
+	      //   }, 1);
+	      //
+	      // },
 	      bindToController: true
 	    };
 

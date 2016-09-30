@@ -1,6 +1,6 @@
 /**
  * angular-bootstrap-calendar - A pure AngularJS bootstrap themed responsive calendar that can display events and has views for year, month, week and day
- * @version v0.23.0
+ * @version v0.24.0
  * @link https://github.com/mattlewis92/angular-bootstrap-calendar
  * @license MIT
  */
@@ -795,7 +795,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        dayViewEnd: '@',
 	        dayViewSplit: '@',
 	        dayViewEventChunkSize: '@',
-	        templateScope: '=?'
+	        templateScope: '=?',
+	        scrollToId: '@'
 	      },
 	      controller: 'MwlCalendarCtrl as vm',
 	      bindToController: true
@@ -894,7 +895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	  }])
-	  .directive('mwlCalendarDay', function() {
+	  .directive('mwlCalendarDay', ["$timeout", function($timeout) {
 
 	    return {
 	      template: '<div mwl-dynamic-directive-template name="calendarDayView" overrides="vm.customTemplateUrls"></div>',
@@ -913,13 +914,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        dayViewEventChunkSize: '=',
 	        customTemplateUrls: '=?',
 	        cellModifier: '=',
-	        templateScope: '='
+	        templateScope: '=',
+	        scrollToId: '='
+
+	      },
+	      link: function(scope, element, attrs, calendarCtrl) {
+	        $timeout(function() {
+	          var container = document.getElementById('daypanel'),
+	              hour = document.getElementById(scope.vm.scrollToId);
+	          if (hour !== null) {
+	            container.scrollTop = hour.offsetTop;
+	          }
+	        }, 1);
+
 	      },
 	      controller: 'MwlCalendarDayCtrl as vm',
 	      bindToController: true
 	    };
 
-	  });
+	  }]);
 
 
 /***/ },
@@ -1729,7 +1742,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	  }])
-	  .directive('mwlCalendarWeek', function() {
+	  .directive('mwlCalendarWeek', ["$timeout", function($timeout) {
 
 	    return {
 	      template: '<div mwl-dynamic-directive-template name="calendarWeekView" overrides="vm.customTemplateUrls"></div>',
@@ -1748,16 +1761,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onDateRangeSelect: '=',
 	        customTemplateUrls: '=?',
 	        cellModifier: '=',
-	        templateScope: '='
+	        templateScope: '=',
+	        scrollToId: '='
 	      },
 	      controller: 'MwlCalendarWeekCtrl as vm',
 	      link: function(scope, element, attrs, calendarCtrl) {
 	        scope.vm.calendarCtrl = calendarCtrl;
+	        $timeout(function() {
+	          var container = document.getElementById('daypanel'),
+	              hour = document.getElementById(scope.vm.scrollToId);
+	          if (hour !== null) {
+	            container.scrollTop = hour.offsetTop;
+	          }
+	        }, 1);
+
 	      },
 	      bindToController: true
 	    };
 
-	  });
+	  }]);
 
 
 /***/ },

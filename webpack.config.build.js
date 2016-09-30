@@ -49,15 +49,17 @@ module.exports = {
   },
   devtool: MIN ? 'source-map' : null,
   module: {
-    preLoaders: [{
-      test: /.*\.js$/,
-      loaders: ['eslint'],
-      exclude: /node_modules/
-    }, {
-      test: /\.html$/,
-      loader: 'htmlhint',
-      exclude: /node_modules/
-    }],
+    // preLoaders: [
+    //     {
+    //   test: /.*\.js$/,
+    //   loaders: ['eslint'],
+    //   exclude: /node_modules/
+    // },
+    //   {
+    //   test: /\.html$/,
+    //   loader: 'htmlhint',
+    //   exclude: /node_modules/
+    // }],
     loaders: [{
       test: /.*\.js$/,
       loaders: ['ng-annotate'],
@@ -73,7 +75,7 @@ module.exports = {
     }]
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
+    // new webpack.NoErrorsPlugin(),
     new webpack.BannerPlugin(getBanner(), {
       raw: true,
       entryOnly: true

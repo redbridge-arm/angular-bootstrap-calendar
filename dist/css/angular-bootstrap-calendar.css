@@ -1,6 +1,6 @@
 /**
  * angular-bootstrap-calendar - A pure AngularJS bootstrap themed responsive calendar that can display events and has views for year, month, week and day
- * @version v0.23.0
+ * @version v0.24.0
  * @link https://github.com/mattlewis92/angular-bootstrap-calendar
  * @license MIT
  */
@@ -261,11 +261,16 @@
 }
 .cal-week-box.cal-day-box .cal-day-panel {
   overflow-x: hidden;
+  height: calc(100% - 50px);
 }
 .cal-day-box {
   text-wrap: none;
   overflow-x: auto !important;
   overflow-y: hidden;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
 }
 .cal-day-box .cal-day-hour-part {
   height: 30px;
@@ -303,6 +308,8 @@
   position: relative;
   padding-left: 60px;
   border: solid 1px #e1e1e1;
+  height: calc(100%);
+  overflow-y: auto;
 }
 .cal-day-box .cal-day-panel-hour {
   position: absolute;
@@ -371,7 +378,7 @@
   background-color: #fafafa;
 }
 .cal-month-day {
-  height: 100px;
+  height: 100%;
 }
 [class*="cal-cell"]:hover,
 .cell-focus,
@@ -383,7 +390,6 @@
 }
 .cal-year-box [class*="span"],
 .cal-month-box [class*="cal-cell"] {
-  min-height: 100px;
   border-right: 1px solid #e1e1e1;
   position: relative;
 }
@@ -412,6 +418,17 @@
   border-right: 1px solid #e1e1e1;
   border-left: 1px solid #e1e1e1;
   border-radius: 2px;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+.cal-month-box,
+.cal-year-box {
+  height: calc(100% - 30px);
+  overflow-y: scroll;
+}
+.cal-week-box {
+  height: 100%;
 }
 .cal-month-box {
   border-right: 0px;
@@ -443,7 +460,8 @@ span[data-cal-date]:hover {
   color: darkgreen;
 }
 .cal-month-box .cal-day-today span[data-cal-date] {
-  font-size: 1.9em;
+  font-size: 1.2em;
+  font-weight: bolder;
 }
 .cal-day-holiday span[data-cal-date] {
   color: #800080;
@@ -519,6 +537,8 @@ a.cal-event-week {
 }
 .cal-context {
   width: 100%;
+  position: absolute;
+  height: 100%;
 }
 @media (max-width: 991px) {
   .cal-year-box [class*="span"]:nth-child(2) {

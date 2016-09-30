@@ -108,7 +108,9 @@ angular
         $timeout(function() {
           var container = document.getElementById('daypanel'),
               hour = document.getElementById(scope.vm.scrollToId);
-          if (hour !== null) container.scrollTop = hour.offsetTop;
+          if (hour !== null) {
+            container.scrollTop = hour.offsetTop;
+          }
         }, 1);
 
       },

@@ -23,7 +23,9 @@
     <div
       class="cal-day-hour-part"
       ng-repeat="segment in hour.segments track by $index"
-      ng-if="vm.dayWidth">
+      ng-if="vm.dayWidth"
+      style="white-space: nowrap"
+    >
       <div class="cal-day-hour-part-time">
         <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart" id="hour{{segment.date.hour()}}"></strong>
         &nbsp;
@@ -31,7 +33,8 @@
       <div
         class="cal-day-hour-part-spacer"
         ng-repeat="day in segment.days track by $index"
-        ng-style="{width: vm.dayWidth + 'px'}"
+        ng-style="{width: (vm.dayWidth) + 'px'}"
+        style="border-right: solid 1px lightgrey;"
         ng-class="[{ 'cal-day-hour-part-selected': vm.dateRangeSelect &&
                 vm.dateRangeSelect.startDate <= vm.getClickedDate(segment.date, vm.dayViewSplit * $parent.$index, $index) &&
                 vm.getClickedDate(segment.date, vm.dayViewSplit * $parent.$index, $index) < vm.dateRangeSelect.endDate }, day.cssClass]"

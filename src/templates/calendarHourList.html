@@ -1,6 +1,6 @@
 <div class="cal-day-panel-hour">
 
-  <div class="cal-day-hour" ng-repeat="hour in vm.hourGrid track by $index">
+  <div class="cal-day-hour" ng-repeat="hour in vm.hourGrid track by $index" id="hour{{$index}}">
 
     <div
       class="cal-day-hour-part"
@@ -16,7 +16,7 @@
       on-drag-select-end="vm.onDragSelectEnd(vm.getClickedDate(segment.date, vm.dayViewSplit * ($index + 1)))"
       ng-if="!vm.dayWidth">
       <div class="cal-day-hour-part-time">
-        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart" id="hour{{segment.date.hour()}}"></strong>
+        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart" ></strong>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
       style="white-space: nowrap"
     >
       <div class="cal-day-hour-part-time">
-        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart" id="hour{{segment.date.hour()}}"></strong>
+        <strong ng-bind="segment.date | calendarDate:'hour':true" ng-if="segment.isStart"></strong>
         &nbsp;
       </div>
       <div

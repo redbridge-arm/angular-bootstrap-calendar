@@ -955,7 +955,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var dayStart = (vm.dayViewStart || '00:00').split(':');
 	      var dayEnd = (vm.dayViewEnd || '23:59').split(':');
 	      vm.hourGrid = calendarUtils.getDayViewHourGrid({
-	        viewDate: calendarConfig.showTimesOnWeekView ? moment(vm.viewDate).startOf('week').toDate() : moment(vm.viewDate).toDate(),
+	        viewDate: vm.weekView ? moment(vm.viewDate).startOf('week').toDate() : moment(vm.viewDate).toDate(),
 	        hourSegments: 60 / vm.dayViewSplit,
 	        dayStart: {
 	          hour: dayStart[0],
@@ -1070,7 +1070,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        customTemplateUrls: '=?',
 	        cellModifier: '=',
 	        templateScope: '=',
-	        scrollToId: '='
+	        scrollToId: '=',
+	        weekView: '<'
 	      },
 	      link: function(scope, element, attrs, calendarCtrl) {
 	        scope.vm.calendarCtrl = calendarCtrl;

@@ -1,4 +1,4 @@
-<div class="events-list" ng-show="day.events.length > 0">
+<div class="events-list" mwl-events-list-overflow ng-show="day.events.length > 0">
   <div
     ng-repeat="event in day.events | orderBy:'startsAt' track by event.$id"
     href="javascript:;"

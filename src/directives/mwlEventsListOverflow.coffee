@@ -2,53 +2,61 @@
 
 angular = require('angular')
 
+$.event.special.sizeChanged =
+  remove: ->
+    $(this).children('iframe.size-changed').remove()
+    return
+  add: ->
+    elm = $(this)
+    iframe = elm.children('iframe.size-changed')
+
+    if !iframe.length
+      iframe = $('<iframe/>')
+      iframe.addClass('size-changed')
+      iframe.prependTo(this)
+    ielm = iframe[0]
+
+    (ielm.contentWindow or ielm).onresize = ->
+      elm.trigger 'sizeChanged'
+    return
+
+getVisible = ($elements, $container) ->
+
+  $visible = $elements.filter((i, e) ->
+    isVisible = false
+    $e = $(e)
+    isVisible = $e.position().top + $e.height() <= $container.height() and $e.position().left + $e.width() <= $container.width()
+    isVisible
+  )
+  $visible
+
+isEventsOverload = (elem) ->
+
+  events = angular.element(elem).find('.event')
+  visible = getVisible(events, angular.element(elem))
+
+  visible.removeClass('last-visible')
+  if events.size() > visible.size()
+    angular.element(elem).addClass('events-overload')
+    visible.eq(visible.size()-1).addClass('last-visible')
+  else
+    angular.element(elem).removeClass('events-overload')
+
 angular.module('mwl.calendar').directive(
   'mwlEventsListOverflow'
   [
-    '$window'
     '$timeout'
-    '$rootScope'
-    ($window, $timeout, $rootScope) ->
+    ($timeout) ->
       return {
         restrict: 'A'
-        link: (scope, elem, attrs)->
+        link: (scope, elem, attrs) ->
 
-          $timeout(->
-            do setFullHeight
-            #        $('nav').off 'resize'
-            $('nav').on 'resize', setFullHeight
-            #FIXME
-            $('#deals-list-table .widget-body a').on 'click', -> $timeout(setFullHeight)
-            $('nav').on 'click',  -> $timeout(setFullHeight, 300)
-            #        angular.element($window).off 'resize'
-            angular.element($window).on 'resize', setFullHeight
-            $rootScope.$on(
-              '$stateChangeSuccess',
-              -> $timeout(setFullHeight)
-            )
+          $timeout(
+            =>
+              isEventsOverload(elem)
+              angular.element(elem).on 'sizeChanged', => isEventsOverload(elem)
+            100
           )
-
-          setFullHeight = ->
-            height = 0
-            viewPortHeight = window.innerHeight
-            nav = $('nav')
-            pageHeight = nav.offset().top + nav.outerHeight() + 120
-            viewHeight = _.max([viewPortHeight, pageHeight])
-            widget = null
-            $widgets = $(elem).find('rbs-widget')
-            widget = $($widgets[0]).find('.widget-body')
-            height = viewHeight - widget.offset().top
-            if height
-              if attrs.maxPercent?
-                height = height * (parseInt(attrs.maxPercent)/100)
-              $widgets.each ->
-                widget = $(this).find('.widget-body')
-                widget.height(height - 39)
-                if attrs.maxPercent?
-                  $(this).find('.rbs-widget').css('marginBottom', '12px')
-                widget.css('overflow-y', 'auto')
-                widget.css('overflow-x', 'hidden')
-            scope.$broadcast('setFullHeight', {height: widget.height()})
 
           return
       }

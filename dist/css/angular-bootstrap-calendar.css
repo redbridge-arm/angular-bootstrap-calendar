@@ -363,6 +363,13 @@
 .day-highlight {
   background-color: #dddddd;
 }
+.events-list iframe.size-changed {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  border: none;
+}
 .cal-row-head [class*="cal-cell"]:first-child,
 .cal-row-head [class*="cal-cell"] {
   font-weight: bolder;

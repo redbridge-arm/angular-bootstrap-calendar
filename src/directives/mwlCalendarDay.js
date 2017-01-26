@@ -84,7 +84,7 @@ angular
     };
 
   })
-  .directive('mwlCalendarDay', function($timeout) {
+  .directive('mwlCalendarDay', function() {
 
     return {
       template: '<div mwl-dynamic-directive-template name="calendarDayView" overrides="vm.customTemplateUrls"></div>',

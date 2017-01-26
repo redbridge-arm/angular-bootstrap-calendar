@@ -129,8 +129,8 @@ describe('mwlCalendarMonth directive', function() {
     //Open event list
     MwlCalendarCtrl.cellIsOpen = true;
     scope.$apply();
-    expect(MwlCalendarCtrl.openRowIndex).to.equal(0);
-    expect(MwlCalendarCtrl.openDayIndex).to.equal(0);
+    expect(MwlCalendarCtrl.openRowIndex).to.equal(null);
+    expect(MwlCalendarCtrl.openDayIndex).to.equal(null);
 
     //Close event list
     MwlCalendarCtrl.cellIsOpen = false;
@@ -192,14 +192,14 @@ describe('mwlCalendarMonth directive', function() {
   });
 
   it('should get the week label', function() {
-    expect(MwlCalendarCtrl.getWeekNumberLabel({date: moment().startOf('year').endOf('week').add(1, 'day')})).to.equal('Week 1');
+    expect(MwlCalendarCtrl.getWeekNumberLabel({date: moment().startOf('year').endOf('week').add(1, 'day')})).to.equal('Week 2');
   });
 
   it('should allow the week label option to be a function', function() {
     calendarConfig.i18nStrings.weekNumber = function(params) {
       return 'My custom function ' + params.weekNumber;
     };
-    expect(MwlCalendarCtrl.getWeekNumberLabel({date: moment().startOf('year').endOf('week').add(1, 'day')})).to.equal('My custom function 1');
+    expect(MwlCalendarCtrl.getWeekNumberLabel({date: moment().startOf('year').endOf('week').add(1, 'day')})).to.equal('My custom function 2');
   });
 
   it('should initialise the date range select', function() {

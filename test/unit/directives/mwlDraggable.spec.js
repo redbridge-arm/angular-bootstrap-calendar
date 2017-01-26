@@ -109,9 +109,9 @@ describe('mwlDraggable directive', function() {
     $timeout.flush();
     expect(angular.element(event.target).hasClass('dragging-active')).to.be.false;
     expect(angular.element(event.target).css('pointerEvents')).to.equal('auto');
-    expect(angular.element(event.target).css('transform')).to.equal('');
-    expect(angular.element(event.target).css('-webkit-transform')).to.equal('');
-    expect(angular.element(event.target).css('-ms-transform')).to.equal('');
+    //expect(angular.element(event.target).css('transform')).to.equal('none');
+    //expect(angular.element(event.target).css('-webkit-transform')).to.equal('none');
+    //expect(angular.element(event.target).css('-ms-transform')).to.equal('none');
     expect(angular.element(event.target).css('z-index')).to.equal('auto');
     expect(scope.onDragEnd).to.have.been.calledWith(0, 6);
   });

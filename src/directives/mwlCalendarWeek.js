@@ -80,7 +80,7 @@ angular
     };
 
   })
-  .directive('mwlCalendarWeek', function($timeout) {
+  .directive('mwlCalendarWeek', function() {
 
     return {
       template: '<div mwl-dynamic-directive-template name="calendarWeekView" overrides="vm.customTemplateUrls"></div>',

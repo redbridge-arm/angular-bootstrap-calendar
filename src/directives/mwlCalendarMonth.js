@@ -10,6 +10,7 @@ angular
     vm.calendarConfig = calendarConfig;
     vm.calendarEventTitle = calendarEventTitle;
     vm.openRowIndex = null;
+    vm.openDayIndex = null;
 
     function toggleCell() {
       vm.openRowIndex = null;

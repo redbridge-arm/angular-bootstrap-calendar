@@ -102,8 +102,8 @@ describe('mwlCalendarYear directive', function() {
     //Open event list
     MwlCalendarCtrl.cellIsOpen = true;
     scope.$apply();
-    expect(MwlCalendarCtrl.openRowIndex).to.equal(0);
-    expect(MwlCalendarCtrl.openMonthIndex).to.equal(0);
+    expect(MwlCalendarCtrl.openRowIndex).to.equal(null);
+    expect(MwlCalendarCtrl.openMonthIndex).to.equal(null);
 
     //Close event list
     MwlCalendarCtrl.cellIsOpen = false;

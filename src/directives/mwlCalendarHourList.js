@@ -135,8 +135,8 @@ angular
       link: function(scope, element, attrs, calendarCtrl) {
         scope.vm.calendarCtrl = calendarCtrl;
         $timeout(function() {
-          var container = document.getElementById('daypanel'),
-              hour = document.getElementById(scope.vm.scrollToId);
+          var container = angular.element('#daypanel'),
+              hour = angular.element('#' + scope.vm.scrollToId);//document.getElementById();
           if (hour !== null) {
             container.scrollTop = hour.offsetTop;
           }

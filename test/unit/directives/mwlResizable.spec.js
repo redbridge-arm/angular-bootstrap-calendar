@@ -121,9 +121,9 @@ describe('mwlresizable directive', function() {
     resizableOptions.onmove(event);
     expect(angular.element(event.target).data('x')).to.be.undefined;
     expect(angular.element(event.target).data('y')).to.be.undefined;
-    expect(angular.element(event.target).css('height')).to.equal('');
-    expect(angular.element(event.target).css('width')).to.equal('');
-    expect(angular.element(event.target).css('transform')).to.be.undefined;
+    expect(angular.element(event.target).css('height')).to.equal('0px');
+    expect(angular.element(event.target).css('width')).to.equal('0px');
+    expect(angular.element(event.target).css('transform')).to.equal('');
     expect(scope.onResize).not.to.have.been.called;
 
   });
@@ -144,9 +144,9 @@ describe('mwlresizable directive', function() {
     resizableOptions.onmove(event);
     expect(angular.element(event.target).data('x')).to.be.undefined;
     expect(angular.element(event.target).data('y')).to.be.undefined;
-    expect(angular.element(event.target).css('height')).to.equal('');
-    expect(angular.element(event.target).css('width')).to.equal('');
-    expect(angular.element(event.target).css('transform')).to.be.undefined;
+    expect(angular.element(event.target).css('height')).to.equal('0px');
+    expect(angular.element(event.target).css('width')).to.equal('0px');
+    expect(angular.element(event.target).css('transform')).to.equal('');
     expect(scope.onResize).not.to.have.been.called;
 
   });

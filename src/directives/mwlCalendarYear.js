@@ -7,6 +7,7 @@ angular
   .controller('MwlCalendarYearCtrl', function($scope, moment, calendarHelper) {
 
     var vm = this;
+    vm.openRowIndex = null;
     vm.openMonthIndex = null;
 
     function toggleCell() {

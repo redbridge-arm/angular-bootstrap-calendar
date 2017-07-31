@@ -436,6 +436,7 @@
 .cal-month-box {
   border-right: 0px;
   border-bottom: 0px;
+  min-height: 700px;
 }
 span[data-cal-date] {
   font-size: 1.2em;
